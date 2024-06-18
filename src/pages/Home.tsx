@@ -1,5 +1,7 @@
 import Header from "../components/Header";
 import Carrousel from "../components/Carrousel";
+import Map from "../components/Map";
+
 import { Element } from "react-scroll";
 import { useEffect } from "react";
 
@@ -16,13 +18,13 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <div className="flex flex-col ">
         <Element name="home">
+          <Header />
           <Carrousel />
         </Element>
         <Element name="map">
-          <div className="w-full h-screen">Map</div>
+          <Map />
         </Element>
       </div>
     </>
