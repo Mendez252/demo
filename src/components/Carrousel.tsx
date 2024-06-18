@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
@@ -8,6 +8,10 @@ import { SectionContext } from "../contexts/SectionContext";
 const Carrousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const context = useContext(SectionContext);
+  if (!context) {
+    // Manejar el caso donde el contexto es undefined
+    return <div>Error: El contexto no está disponible.</div>;
+  }
   const { section, setSection } = context;
 
   const images = [

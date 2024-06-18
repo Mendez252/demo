@@ -1,6 +1,3 @@
-// IframeMap.tsx
-import React from "react";
-
 const Map = () => {
   return (
     <iframe
