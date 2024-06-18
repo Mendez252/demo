@@ -1,10 +1,6 @@
 import backgroundImage from "../assets/bg.jpg";
 
-interface BodyProps {
-  children: React.ReactNode;
-}
-
-const Body = ({ children }: BodyProps) => {
+const Body = () => {
   return (
     <div>
       <img

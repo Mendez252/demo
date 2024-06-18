@@ -36,14 +36,14 @@ const Carrousel = () => {
           className="p-2  rounded-full glassmorphism shadow-lg"
           onClick={() => {
             if (section === "map") {
-              setSection((prev) => "home");
+              setSection("home");
               scroller.scrollTo("home", {
                 duration: 800,
                 delay: 0,
                 smooth: "easeInOutQuart",
               });
             } else if (section === "home") {
-              setSection((prev) => "map");
+              setSection("map");
               scroller.scrollTo("map", {
                 duration: 800,
                 delay: 0,
