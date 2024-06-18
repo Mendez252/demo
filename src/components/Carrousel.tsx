@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
+import { FaHome } from "react-icons/fa";
+import { scroller } from "react-scroll";
+import { SectionContext } from "../contexts/SectionContext";
 
 const Carrousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const context = useContext(SectionContext);
+  const { section, setSection } = context;
+
   const images = [
     "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Slide+1",
     "https://images.unsplash.com/photo-1565402170291-8491f14678db?q=80&w=2017&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Slide+2",
@@ -25,14 +31,41 @@ const Carrousel = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <div className="fixed bottom-[170px] right-[100px] z-10 shadow-md hover:cursor-pointer">
-        <FaLocationDot size={55} color={"red"} />
+      <div className="fixed bottom-[170px] right-[100px] z-10 hover:cursor-pointer">
+        <div
+          className="p-2  rounded-full glassmorphism shadow-lg"
+          onClick={() => {
+            if (section === "map") {
+              setSection((prev) => "home");
+              scroller.scrollTo("home", {
+                duration: 800,
+                delay: 0,
+                smooth: "easeInOutQuart",
+              });
+            } else if (section === "home") {
+              setSection((prev) => "map");
+              scroller.scrollTo("map", {
+                duration: 800,
+                delay: 0,
+                smooth: "easeInOutQuart",
+              });
+            }
+          }}
+        >
+          {section === "map" ? (
+            <FaHome size={45} color={"#1679AB"} />
+          ) : (
+            <FaLocationDot size={45} color={"red"} />
+          )}
+        </div>
       </div>
       <div
-        className="fixed bottom-[80px] right-[100px] z-10 shadow-md hover:cursor-pointer "
+        className="fixed bottom-[80px] right-[100px] z-10  hover:cursor-pointer "
         onClick={() => alert("Contact us")}
       >
-        <IoLogoWhatsapp size={55} color={"#25D366"} />
+        <div className="p-2 glassmorphism rounded-full shadow-lg">
+          <IoLogoWhatsapp size={45} color={"#25D366"} />
+        </div>
       </div>
 
       <div className="flex h-full">
