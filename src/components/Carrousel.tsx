@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Carrousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,12 +25,16 @@ const Carrousel = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <button
-        className="fixed bottom-[100px] right-[100px] z-10 bg-[#25D366] text-white px-5 py-3 rounded-full shadow-md border-4"
+      <div className="fixed bottom-[170px] right-[100px] z-10 shadow-md hover:cursor-pointer">
+        <FaLocationDot size={55} color={"red"} />
+      </div>
+      <div
+        className="fixed bottom-[80px] right-[100px] z-10 shadow-md hover:cursor-pointer "
         onClick={() => alert("Contact us")}
       >
-        Contactanos
-      </button>
+        <IoLogoWhatsapp size={55} color={"#25D366"} />
+      </div>
+
       <div className="flex h-full">
         {images.map((image, index) => (
           <div
@@ -46,13 +52,13 @@ const Carrousel = () => {
         ))}
       </div>
       <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-900 hover:border-orange-400 text-white hover:text-orange-400 text-3xl px-4 py-2 rounded-full shadow-md z-10  border-4 "
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-900 hover:border-orange-400 text-white hover:text-orange-400 text-3xl px-4 py-2 rounded-full shadow-md z-10 border-4"
         onClick={prevSlide}
       >
         {"<"}
       </button>
       <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-900 hover:border-orange-400 text-white hover:text-orange-400 text-3xl px-4 py-2 rounded-full shadow-md z-10 border-4 "
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-900 hover:border-orange-400 text-white hover:text-orange-400 text-3xl px-4 py-2 rounded-full shadow-md z-10 border-4"
         onClick={nextSlide}
       >
         {">"}
