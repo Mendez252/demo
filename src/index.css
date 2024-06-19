@@ -13,8 +13,8 @@ body {
 }
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.1); /* Fondo blanco con transparencia */
-  backdrop-filter: blur(10px); /* Desenfoque */
+  background: rgba(0, 0, 0, 0.8); /* Fondo blanco con transparencia */
+  backdrop-filter: blur(3px); /* Desenfoque */
   -webkit-backdrop-filter: blur(10px); /* Desenfoque para Safari */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Borde blanco transparente */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */

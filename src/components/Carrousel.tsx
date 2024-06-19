@@ -2,8 +2,10 @@ import { useState, useContext } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
+import { IoCaretBackCircleSharp } from "react-icons/io5";
 import { scroller } from "react-scroll";
 import { SectionContext } from "../contexts/SectionContext";
+import { IoCaretForwardCircleSharp } from "react-icons/io5";
 
 const Carrousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,10 +17,14 @@ const Carrousel = () => {
   const { section, setSection } = context;
 
   const images = [
-    "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Slide+1",
-    "https://images.unsplash.com/photo-1565402170291-8491f14678db?q=80&w=2017&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Slide+2",
-    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Slide+3",
-    "https://images.unsplash.com/photo-1612965607446-25e1332775ae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?text=Slide+4",
+    "https://res.cloudinary.com/universalm/image/upload/v1718762661/cuba2_gkr83x.jpg?text=Slide+1",
+    "https://res.cloudinary.com/universalm/image/upload/v1718763903/cuba4_zgwdsx.jpg?text=Slide+2",
+    "https://res.cloudinary.com/universalm/image/upload/v1718763219/auto_iww0vw.jpg?text=Slide+3",
+    "https://res.cloudinary.com/universalm/image/upload/v1718763351/cuba_jewaz7.jpg?text=Slide+4",
+    "https://res.cloudinary.com/universalm/image/upload/v1718763515/cuba3_lftplf.jpg?text=Slide+5",
+    "https://res.cloudinary.com/universalm/image/upload/v1718826260/cuba6_nsiev2.jpg?text=Slide+6",
+    "https://res.cloudinary.com/universalm/image/upload/v1718826515/cuba7_s3p730.jpg?text=Slide+7",
+    "https://res.cloudinary.com/universalm/image/upload/v1718829163/cuba8_p1fs3r.jpg",
   ];
 
   const nextSlide = () => {
@@ -57,26 +63,52 @@ const Carrousel = () => {
           }}
         >
           {section === "map" ? (
-            <FaHome size={45} color={"#1679AB"} />
+            <FaHome
+              size={45}
+              className="text-[#1679AB] group-hover:text-[#123456]"
+            />
           ) : (
-            <FaLocationDot size={45} color={"red"} />
+            <FaLocationDot
+              size={45}
+              className="text-red-500 group-hover:text-[#654321]"
+            />
           )}
         </div>
       </div>
       <div
-        className="fixed bottom-[80px] right-[100px] z-10  hover:cursor-pointer "
+        className="fixed bottom-[80px] right-[100px] z-10 group hover:cursor-pointer "
         onClick={() => alert("Contact us")}
       >
         <div className="p-2 glassmorphism rounded-full shadow-lg">
-          <IoLogoWhatsapp size={45} color={"#25D366"} />
+          <IoLogoWhatsapp
+            size={45}
+            className="text-[#25D366] group-hover:text-[#1a9949]"
+          />
         </div>
       </div>
-
-      <div className="flex h-full">
+      <div
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 flex justify-center items-center glassmorphism w-[35px] h-full border-0 group hover:cursor-pointer"
+        onClick={prevSlide}
+      >
+        <IoCaretBackCircleSharp
+          size={50}
+          className="text-white group-hover:text-[#CF142B]"
+        />
+      </div>
+      <div
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 flex justify-center items-center glassmorphism w-[35px] h-full border-0 group hover:cursor-pointer"
+        onClick={nextSlide}
+      >
+        <IoCaretForwardCircleSharp
+          size={50}
+          className="text-white group-hover:text-[#CF142B]"
+        />
+      </div>
+      <div className="flex h-full items-start justify-center">
         {images.map((image, index) => (
           <div
             key={index}
-            className={`w-full ${
+            className={`w-full h-[97%] ${
               index === currentIndex ? "block" : "hidden"
             } transition-opacity duration-500 ease-in-out`}
           >
@@ -88,18 +120,6 @@ const Carrousel = () => {
           </div>
         ))}
       </div>
-      <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-900 hover:border-orange-400 text-white hover:text-orange-400 text-3xl px-4 py-2 rounded-full shadow-md z-10 border-4"
-        onClick={prevSlide}
-      >
-        {"<"}
-      </button>
-      <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-900 hover:border-orange-400 text-white hover:text-orange-400 text-3xl px-4 py-2 rounded-full shadow-md z-10 border-4"
-        onClick={nextSlide}
-      >
-        {">"}
-      </button>
     </div>
   );
 };
