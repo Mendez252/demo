@@ -1,9 +1,10 @@
+import { Element } from "react-scroll";
+import { useEffect } from "react";
 import Header from "../components/Header";
 import Carrousel from "../components/Carrousel";
 import Map from "../components/Map";
-
-import { Element } from "react-scroll";
-import { useEffect } from "react";
+import Card from "../components/Card";
+import FirstStep from "./FirstStep";
 
 const Home = () => {
   useEffect(() => {
@@ -18,12 +19,20 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col ">
-        <Element name="home">
+      <div className="flex flex-col">
+        <div className="fixed top-0 w-full z-50">
           <Header />
+        </div>
+        <Element name="home" className="pt-[var(--header-height)]">
+          <div className="absolute z-10 w-[30%] h-48 top-60 right-56">
+            <Card />
+          </div>
           <Carrousel />
         </Element>
-        <Element name="map">
+        <Element name="firstStep" className="pt-[var(--header-height)]">
+          <FirstStep />
+        </Element>
+        <Element name="map" className="pt-[var(--header-height)]">
           <Map />
         </Element>
       </div>
